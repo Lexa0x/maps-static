@@ -201,6 +201,22 @@ body {
     color: var(--primary-color);
 }
 
+.btn-linkedin {
+    background-color: #0077B5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-linkedin:hover {
+    background-color: #005582;
+}
+
+.btn-linkedin i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
 /* Sección Nosotros */
 .about-content {
     display: flex;
@@ -325,89 +341,47 @@ body {
     font-size: 1.2rem;
 }
 
-/* Sección Contacto */
-.contact-container {
-    display: flex;
-    gap: 50px;
+/* Sección Noticias LinkedIn */
+.news {
+    background-color: #f5f5f5;
 }
 
-.contact-info {
-    flex: 1;
-}
-
-.contact-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.contact-details {
-    margin-bottom: 30px;
-}
-
-.contact-details p {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.contact-details i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    width: 20px;
+.news-intro {
     text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    color: var(--text-light);
 }
 
-.social-links {
-    margin-top: 30px;
+.linkedin-embed-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 15px;
-    background-color: rgba(245, 124, 0, 0.1);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background-color: rgba(245, 124, 0, 0.2);
-}
-
-.social-link i {
-    margin-right: 8px;
-}
-
-.contact-form {
-    flex: 1;
-    background-color: var(--white);
-    padding: 30px;
+.linkedin-post {
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.linkedin-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
+.linkedin-post iframe {
+    border: none;
+    min-height: 500px;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
+.linkedin-cta {
+    text-align: center;
+    margin-top: 30px;
 }
 
 /* Footer */
@@ -467,7 +441,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .about-content, .contact-container {
+    .about-content {
         flex-direction: column;
     }
     
@@ -510,6 +484,14 @@ body {
     .section {
         padding: 60px 0;
     }
+    
+    .linkedin-embed-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .linkedin-post iframe {
+        min-height: 400px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -525,4 +507,109 @@ body {
         width: 100%;
         text-align: center;
     }
+}
+
+/* Estilos mejorados para LinkedIn */
+.linkedin-post {
+    position: relative;
+    min-height: 530px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkedin-post iframe,
+.linkedin-post > div {
+    width: 100% !important;
+    min-height: 500px !important;
+    border: none !important;
+}
+
+.linkedin-fallback {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Mostrar fallback si LinkedIn no carga */
+.linkedin-post:empty,
+.linkedin-post iframe[src=""] {
+    & + .linkedin-fallback {
+        display: block;
+    }
+}
+
+/* Corrección para el widget de LinkedIn */
+span[data-li-script] {
+    width: 100% !important;
+}
+
+.linkedin-loader {
+    text-align: center;
+    padding: 40px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.linkedin-loader .fa-spinner {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.linkedin-alt-embed {
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+/* Estilos para el embed de LinkedIn */
+.linkedin-embed {
+    min-height: 530px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkedin-embed iframe {
+    width: 100% !important;
+    min-height: 500px !important;
+    border: none !important;
+}
+
+.linkedin-fallback {
+    text-align: center;
+    padding: 40px;
+}
+
+.linkedin-fallback p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Loader mientras carga */
+.linkedin-embed::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0,119,181,0.2);
+    border-radius: 50%;
+    border-top-color: #0077b5;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 15px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
