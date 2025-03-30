@@ -640,3 +640,84 @@ span[data-li-script] {
     color: #666;
     margin-top: 20px;
 }
+
+/* Estilos para el sistema de carga de LinkedIn */
+.linkedin-loading {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.linkedin-loading .spinner {
+    border: 4px solid rgba(0, 119, 181, 0.2);
+    border-top: 4px solid #0077b5;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.adblock-warning {
+    font-size: 0.8rem;
+    color: #d32f2f;
+    margin-top: 15px;
+}
+
+.linkedin-fallback {
+    text-align: center;
+    padding: 25px;
+    background: #fff3e0;
+    border-radius: 8px;
+    border-left: 4px solid #fb8c00;
+}
+
+/* Loader mejorado */
+.linkedin-loading {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+    background: rgba(255,255,255,0.9);
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.linkedin-loading .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,119,181,0.2);
+    border-radius: 50%;
+    border-top-color: #0077b5;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.linkedin-loading p {
+    display: inline-block;
+    margin: 0;
+    color: #0077b5;
+    vertical-align: middle;
+}
+
+.linkedin-embed-container {
+    position: relative;
+    min-height: 530px;
+}
+
+/* Animación más suave */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
