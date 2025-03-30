@@ -354,29 +354,58 @@ body {
     color: var(--text-light);
 }
 
-.linkedin-embed-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
+.linkedin-container {
+    position: relative;
+    min-height: 530px;
     margin-bottom: 40px;
 }
 
-.linkedin-post {
+.linkedin-embed {
+    width: 100%;
+    min-height: 530px;
     background: white;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
-.linkedin-post:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.linkedin-post iframe {
+.linkedin-embed iframe {
+    width: 100%;
+    min-height: 530px;
     border: none;
-    min-height: 500px;
+}
+
+.linkedin-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.linkedin-loader .spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 119, 181, 0.2);
+    border-top-color: #0077b5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.linkedin-fallback {
+    text-align: center;
+    padding: 30px;
+    background: #fff3e0;
+    border-radius: 8px;
+    border-left: 4px solid #fb8c00;
+    display: none;
+}
+
+.linkedin-fallback .btn {
+    margin-top: 15px;
 }
 
 .linkedin-cta {
@@ -485,11 +514,9 @@ body {
         padding: 60px 0;
     }
     
-    .linkedin-embed-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .linkedin-post iframe {
+    .linkedin-container,
+    .linkedin-embed,
+    .linkedin-embed iframe {
         min-height: 400px;
     }
 }
@@ -509,215 +536,6 @@ body {
     }
 }
 
-/* Estilos mejorados para LinkedIn */
-.linkedin-post {
-    position: relative;
-    min-height: 530px;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.linkedin-post iframe,
-.linkedin-post > div {
-    width: 100% !important;
-    min-height: 500px !important;
-    border: none !important;
-}
-
-.linkedin-fallback {
-    display: none;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Mostrar fallback si LinkedIn no carga */
-.linkedin-post:empty,
-.linkedin-post iframe[src=""] {
-    & + .linkedin-fallback {
-        display: block;
-    }
-}
-
-/* Corrección para el widget de LinkedIn */
-span[data-li-script] {
-    width: 100% !important;
-}
-
-.linkedin-loader {
-    text-align: center;
-    padding: 40px;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-.linkedin-loader .fa-spinner {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.linkedin-alt-embed {
-    width: 100%;
-    min-height: 500px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-}
-
-/* Estilos para el embed de LinkedIn */
-.linkedin-embed {
-    min-height: 530px;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.linkedin-embed iframe {
-    width: 100% !important;
-    min-height: 500px !important;
-    border: none !important;
-}
-
-.linkedin-fallback {
-    text-align: center;
-    padding: 40px;
-}
-
-.linkedin-fallback p {
-    margin-bottom: 20px;
-    color: var(--text-light);
-}
-
-/* Loader mientras carga */
-.linkedin-embed::before {
-    content: "";
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(0,119,181,0.2);
-    border-radius: 50%;
-    border-top-color: #0077b5;
-    animation: spin 1s ease-in-out infinite;
-    margin-right: 15px;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* Estilos para el nuevo embed alternativo */
-.linkedin-embed-alt {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.technical-fallback {
-    text-align: center;
-    padding: 30px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.technical-fallback p {
-    margin-bottom: 15px;
-}
-
-.small-text {
-    font-size: 0.8rem;
-    color: #666;
-    margin-top: 20px;
-}
-
-/* Estilos para el sistema de carga de LinkedIn */
-.linkedin-loading {
-    text-align: center;
-    padding: 40px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.linkedin-loading .spinner {
-    border: 4px solid rgba(0, 119, 181, 0.2);
-    border-top: 4px solid #0077b5;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.adblock-warning {
-    font-size: 0.8rem;
-    color: #d32f2f;
-    margin-top: 15px;
-}
-
-.linkedin-fallback {
-    text-align: center;
-    padding: 25px;
-    background: #fff3e0;
-    border-radius: 8px;
-    border-left: 4px solid #fb8c00;
-}
-
-/* Loader mejorado */
-.linkedin-loading {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 10;
-    transition: opacity 0.3s ease;
-    background: rgba(255,255,255,0.9);
-    padding: 15px 30px;
-    border-radius: 50px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.linkedin-loading .spinner {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(0,119,181,0.2);
-    border-radius: 50%;
-    border-top-color: #0077b5;
-    animation: spin 1s ease-in-out infinite;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.linkedin-loading p {
-    display: inline-block;
-    margin: 0;
-    color: #0077b5;
-    vertical-align: middle;
-}
-
-.linkedin-embed-container {
-    position: relative;
-    min-height: 530px;
-}
-
-/* Animación más suave */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
