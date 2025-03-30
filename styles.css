@@ -613,3 +613,30 @@ span[data-li-script] {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Estilos para el nuevo embed alternativo */
+.linkedin-embed-alt {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.technical-fallback {
+    text-align: center;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.technical-fallback p {
+    margin-bottom: 15px;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 20px;
+}
