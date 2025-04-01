@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Barra de Navegación Funcional -->
+    <!-- Barra de Navegación -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">MAPS <span>SpA</span></a>
-            <button class="menu-toggle" id="mobile-menu" aria-label="Menú">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="#" class="logo">
+                <img src="assets/maps-ernc-logo.svg" alt="MAPS SpA" class="logo-svg">
+            </a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
@@ -72,7 +71,7 @@
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipo MAPS" loading="lazy">
+                    <img src="https://i.ibb.co/bj7y50s4/mantenimiento-preventivo-tracker-solares.webp" alt="Equipo MAPS" loading="lazy">
                 </div>
             </div>
         </div>
@@ -81,85 +80,175 @@
     <!-- Sección Servicios -->
     <section class="section services" id="servicios">
         <div class="container">
-            <h2 class="section-title">NUESTROS SERVICIOS</h2>
-            <p class="service-intro">Boost your energy yield with tailored maintenance solutions</p>
+            <div class="services-header">
+                <h2 class="section-title">NUESTROS SERVICIOS</h2>
+                <p class="service-intro">Los propietarios de activos fotovoltaicos confían en nuestros resultados</p>
+            </div>
             
-            <div class="services-grid">
-                <!-- Servicio 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-microchip"></i>
+            <div class="nova-carousel">
+                <div class="nova-carousel-container">
+                    <div class="nova-carousel-track" id="nova-carousel-track">
+                        <!-- Servicio 1 -->
+                        <div class="nova-carousel-slide">
+                            <div class="nova-service-card">
+                                <div class="nova-service-content">
+                                    <div class="nova-service-icon">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <h3>Configuración de Componentes</h3>
+                                    <div class="nova-service-features">
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Motherboard Replacement</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>CtrlBox Configuration</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>CommBox(es) Configuration</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nova-service-overlay">
+                                    <p>Soluciones técnicas especializadas para componentes fotovoltaicos</p>
+                                    <a href="#contacto" class="nova-btn">Consultar servicio</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Servicio 2 -->
+                        <div class="nova-carousel-slide">
+                            <div class="nova-service-card">
+                                <div class="nova-service-content">
+                                    <div class="nova-service-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <h3>Testing Services</h3>
+                                    <div class="nova-service-features">
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Motion tests (30°-150° tilt)</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Signal quality verification</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Troubleshooting</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nova-service-overlay">
+                                    <p>Pruebas exhaustivas para garantizar el máximo rendimiento</p>
+                                    <a href="#contacto" class="nova-btn">Consultar servicio</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Servicio 3 -->
+                        <div class="nova-carousel-slide">
+                            <div class="nova-service-card">
+                                <div class="nova-service-content">
+                                    <div class="nova-service-icon">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <h3>Mantenimiento</h3>
+                                    <div class="nova-service-features">
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Slew Drive Maintenance</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Corrosion Control</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Module Cleaning</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nova-service-overlay">
+                                    <p>Programas de mantenimiento preventivo y correctivo</p>
+                                    <a href="#contacto" class="nova-btn">Consultar servicio</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Servicio 4 -->
+                        <div class="nova-carousel-slide">
+                            <div class="nova-service-card">
+                                <div class="nova-service-content">
+                                    <div class="nova-service-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h3>Soluciones Especializadas</h3>
+                                    <div class="nova-service-features">
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Fiber optics implementation</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Structured cabling</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <span class="feature-check"><i class="fas fa-check"></i></span>
+                                            <span>Certification & Labeling</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nova-service-overlay">
+                                    <p>Implementación de soluciones tecnológicas avanzadas</p>
+                                    <a href="#contacto" class="nova-btn">Consultar servicio</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Configuración de Componentes</h3>
-                    <ul class="service-features">
-                        <li>Motherboard Replacement</li>
-                        <li>CtrlBox Configuration</li>
-                        <li>CommBox(es) Configuration</li>
-                    </ul>
                 </div>
                 
-                <!-- Servicio 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Testing Services</h3>
-                    <ul class="service-features">
-                        <li>Motion tests (30°-150° tilt)</li>
-                        <li>Signal quality verification</li>
-                        <li>Troubleshooting</li>
-                    </ul>
-                </div>
+                <!-- Controles del carrusel -->
+                <button class="nova-carousel-btn nova-carousel-prev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nova-carousel-btn nova-carousel-next" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
                 
-                <!-- Servicio 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Mantenimiento</h3>
-                    <ul class="service-features">
-                        <li>Slew Drive Maintenance</li>
-                        <li>Corrosion Control</li>
-                        <li>Module Cleaning</li>
-                    </ul>
-                </div>
-                
-                <!-- Servicio 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Soluciones Especializadas</h3>
-                    <ul class="service-features">
-                        <li>Fiber optics implementation</li>
-                        <li>Structured cabling</li>
-                        <li>Certification & Labeling</li>
-                    </ul>
+                <!-- Indicadores -->
+                <div class="nova-carousel-indicators">
+                    <button class="nova-indicator active" aria-label="Slide 1"></button>
+                    <button class="nova-indicator" aria-label="Slide 2"></button>
+                    <button class="nova-indicator" aria-label="Slide 3"></button>
+                    <button class="nova-indicator" aria-label="Slide 4"></button>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Sección Noticias LinkedIn -->
-<section class="section news" id="noticias">
-    <div class="container">
-        <h2 class="section-title">ÚLTIMAS NOTICIAS</h2>
-        <p class="news-intro">Mantente actualizado con nuestras últimas publicaciones</p>
-        
-        <div id="linkedin-posts-container" class="linkedin-posts-container">
-            <!-- Las publicaciones se cargarán aquí -->
+    <!-- Sección Noticias LinkedIn -->
+    <section class="section news" id="noticias">
+        <div class="container">
+            <h2 class="section-title">ÚLTIMAS NOTICIAS</h2>
+            <p class="news-intro">Mantente actualizado con nuestras últimas publicaciones</p>
+            
+            <div id="linkedin-posts-container" class="linkedin-posts-container">
+                <!-- Las publicaciones se cargarán aquí -->
+            </div>
+            
+            <div class="linkedin-cta">
+                <a href="https://www.linkedin.com/company/mapschile" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn btn-linkedin">
+                    <i class="fab fa-linkedin"></i> Síguenos en LinkedIn
+                </a>
+            </div>
         </div>
-        
-        <div class="linkedin-cta">
-            <a href="https://www.linkedin.com/company/mapschile" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="btn btn-linkedin">
-                <i class="fab fa-linkedin"></i> Síguenos en LinkedIn
-            </a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">

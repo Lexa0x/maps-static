@@ -1,4 +1,4 @@
-/* Variables de color */
+/* ===== Variables y Reset ===== */
 :root {
     --primary-color: #F57C00;
     --primary-light: #FFB74D;
@@ -9,9 +9,13 @@
     --white: #fff;
     --text-color: #333;
     --text-light: #666;
+    --linkedin-color: #0077B5;
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow-lg: 0 15px 30px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
 }
 
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -21,15 +25,85 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 80px;
 }
 
-/* Contenedor principal */
+/* ===== Navbar Fix ===== */
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var();
+    box-shadow: var();
+    z-index: 1000;
+    padding: 15px 0;
+    transition: var(--transition);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Añadido */
+    max-width: 1200px; /* Añadido para consistencia */
+    padding: 0 20px; /* Añadido */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--dark-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ===== Utilidades ===== */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -37,7 +111,6 @@ body {
     padding: 0 15px;
 }
 
-/* Estilos de sección */
 .section {
     padding: 80px 0;
 }
@@ -59,92 +132,62 @@ body {
     margin: 15px auto 30px;
 }
 
-/* Barra de navegación */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    padding: 15px 0;
-    transition: all 0.3s ease;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.logo span {
-    color: var(--dark-color);
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--dark-color);
-    cursor: pointer;
-    display: none;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
-.nav-links li {
-    margin-left: 30px;
-}
-
-.nav-links a {
-    color: var(--dark-color);
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    padding: 5px 0;
-    transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
     background-color: var(--primary-color);
-    transition: width 0.3s ease;
+    color: var(--white);
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid transparent;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+.btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
 }
 
-.nav-links a:hover {
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background-color: var(--white);
     color: var(--primary-color);
+}
+
+.btn-linkedin {
+    background-color: var(--linkedin-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-linkedin:hover {
+    background-color: #005582;
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 0.9rem;
 }
 
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        url('https://i.ibb.co/670sfMmF/paneles-solares-campo.webp') no-repeat center center/cover;
     color: var(--white);
     display: flex;
     align-items: center;
     text-align: center;
-    padding-top: 80px;
+    margin-top: -8.6vh;
 }
 
 .hero-content {
@@ -171,53 +214,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Botones */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.btn:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.btn-outline {
-    background-color: transparent;
-    border-color: var(--white);
-    color: var(--white);
-}
-
-.btn-outline:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
-}
-
-.btn-linkedin {
-    background-color: #0077B5;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-linkedin:hover {
-    background-color: #005582;
-}
-
-.btn-linkedin i {
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
-
-/* Sección Nosotros */
+/* About Section */
 .about-content {
     display: flex;
     gap: 50px;
@@ -238,7 +235,7 @@ body {
     flex: 1;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .about-image img {
@@ -263,8 +260,8 @@ body {
     background-color: var(--white);
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
 }
 
 .advantage-card:hover {
@@ -282,68 +279,210 @@ body {
     margin-bottom: 10px;
 }
 
-/* Sección Servicios */
+/* Services Section */
+.services {
+    background-color: #f5f5f5;
+    padding: 100px 0;
+    position: relative;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .service-intro {
-    text-align: center;
+    font-size: 1.25rem;
+    color: #555;
+    margin-top: 1rem;
+    font-weight: 400;
     max-width: 700px;
-    margin: 0 auto 40px;
-    font-size: 1.1rem;
-    color: var(--text-light);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* Carrusel de servicios */
+.nova-carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.nova-carousel-container {
+    position: relative;
+    padding: 0 60px;
+}
+
+.nova-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     gap: 30px;
+    padding-bottom: 20px;
 }
 
-.service-card {
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+.nova-carousel-slide {
+    min-width: calc(33.333% - 20px);
+    flex: 0 0 auto;
     transition: all 0.3s ease;
-    text-align: center;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+.nova-service-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border: 1px solid #eee;
 }
 
-.service-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+.nova-service-content {
+    padding: 40px 30px;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    transition: all 0.4s ease;
 }
 
-.service-card h3 {
+.nova-service-icon {
+    font-size: 2.5rem;
+    color: #F57C00;
+    margin-bottom: 25px;
+}
+
+.nova-service-card h3 {
+    color: #222;
+    margin-bottom: 25px;
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-weight: 600;
+    line-height: 1.3;
 }
 
-.service-features {
-    text-align: left;
+.nova-service-features {
     margin-top: 20px;
 }
 
-.service-features li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 25px;
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
 }
 
-.service-features li::before {
-    content: '•';
-    color: var(--primary-color);
+.feature-check {
+    color: #F57C00;
+    margin-right: 12px;
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.nova-service-overlay {
     position: absolute;
-    left: 10px;
-    font-size: 1.2rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #F57C00, #FF9800);
+    color: white;
+    padding: 30px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 3;
 }
 
-/* Sección Noticias LinkedIn */
+.nova-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.nova-service-card:hover .nova-service-overlay {
+    transform: translateY(0);
+}
+
+.nova-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: white;
+    color: #F57C00;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.nova-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Controles del carrusel */
+.nova-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F57C00;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.nova-carousel-btn:hover {
+    background: #F57C00;
+    color: white;
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.nova-carousel-prev {
+    left: 0;
+}
+
+.nova-carousel-next {
+    right: 0;
+}
+
+/* Indicadores */
+.nova-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.nova-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.nova-indicator.active {
+    background: #F57C00;
+    transform: scale(1.3);
+}
+
+/* News Section */
 .news {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 .news-intro {
@@ -354,63 +493,64 @@ body {
     color: var(--text-light);
 }
 
-.linkedin-container {
-    position: relative;
-    min-height: 530px;
-    margin-bottom: 40px;
+.linkedin-posts-container {
+    margin: 30px 0;
 }
 
-.linkedin-embed {
-    width: 100%;
-    min-height: 530px;
-    background: white;
+.linkedin-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.linkedin-post-card {
+    background: var(--white);
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
     overflow: hidden;
 }
 
-.linkedin-embed iframe {
+.linkedin-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.post-image-container {
     width: 100%;
-    min-height: 530px;
-    border: none;
-}
-
-.linkedin-loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-}
-
-.linkedin-loader .spinner {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(0, 119, 181, 0.2);
-    border-top-color: #0077b5;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
     margin-bottom: 15px;
 }
 
-.linkedin-fallback {
-    text-align: center;
-    padding: 30px;
-    background: #fff3e0;
-    border-radius: 8px;
-    border-left: 4px solid #fb8c00;
-    display: none;
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.linkedin-fallback .btn {
+.linkedin-post-card:hover .post-image {
+    transform: scale(1.05);
+}
+
+.post-content {
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 15px;
-}
-
-.linkedin-cta {
-    text-align: center;
-    margin-top: 30px;
+    font-size: 0.85rem;
+    color: var(--text-light);
 }
 
 /* Footer */
@@ -454,7 +594,7 @@ body {
 
 .footer-links a {
     color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s ease;
+    transition: var(--transition);
     text-decoration: none;
 }
 
@@ -468,7 +608,42 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Design */
+/* Estados de carga */
+.linkedin-loading,
+.no-posts-message,
+.linkedin-fallback {
+    text-align: center;
+    padding: 40px;
+}
+
+.linkedin-loading .spinner,
+.linkedin-loader .spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 119, 181, 0.2);
+    border-top-color: var(--linkedin-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.linkedin-fallback {
+    background: #fff3e0;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.no-posts-message {
+    color: var(--text-light);
+}
+
+/* Animaciones */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Responsive Design ===== */
 @media (max-width: 992px) {
     .about-content {
         flex-direction: column;
@@ -478,46 +653,77 @@ body {
         order: -1;
         margin-bottom: 30px;
     }
+    
+    .nova-carousel-slide {
+        min-width: calc(50% - 15px);
+    }
+    
+    .services {
+        padding: 80px 0;
+    }
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 0;
-        transition: left 0.3s ease;
-    }
-    
-    .nav-links.active {
-        left: 0;
-    }
-    
-    .nav-links li {
-        margin: 15px 0;
+    .section {
+        padding: 60px 0;
     }
     
     .hero h1 {
         font-size: 2.5rem;
     }
     
-    .section {
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .nav-links li {
+        padding: 5px;
+    }
+    
+    .nav-links li a {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
+    
+    .nova-carousel-slide {
+        min-width: 100%;
+    }
+    
+    .services {
         padding: 60px 0;
     }
     
-    .linkedin-container,
-    .linkedin-embed,
-    .linkedin-embed iframe {
-        min-height: 400px;
+    .post-image-container {
+        height: 160px;
+    }
+    
+    .linkedin-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nova-carousel-container {
+        padding: 0 30px;
+    }
+    
+    .nova-service-content {
+        padding: 30px 20px;
+    }
+    
+    .nova-service-overlay {
+        padding: 20px;
+    }
+    
+    /* Ajuste para móvil - navbar más compacta */
+    body {
+        padding-top: 60px;
+    }
+    
+    .navbar {
+        padding: 10px 0;
     }
 }
 
@@ -534,138 +740,26 @@ body {
         width: 100%;
         text-align: center;
     }
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* Estilos para las publicaciones de LinkedIn via RSS */
-.linkedin-posts-container {
-    margin: 30px 0;
-}
-
-.linkedin-loading {
-    text-align: center;
-    padding: 40px;
-}
-
-.linkedin-loading .spinner {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(0, 119, 181, 0.2);
-    border-top-color: #0077b5;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
-}
-
-.linkedin-posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.linkedin-post-card {
-    background: white;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.linkedin-post-card:hover {
-    transform: translateY(-5px);
-}
-
-.post-date {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.post-content {
-    margin: 15px 0;
-    line-height: 1.5;
-}
-
-.post-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin: 10px 0;
-}
-
-.linkedin-fallback {
-    text-align: center;
-    padding: 30px;
-    background: #fff3e0;
-    border-radius: 8px;
-    border-left: 4px solid #fb8c00;
-}
-
-.no-posts-message {
-    text-align: center;
-    padding: 30px;
-    color: var(--text-light);
-}
-
-/* Estilos mejorados para las publicaciones de LinkedIn */
-.linkedin-post-card {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.post-image-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 6px 6px 0 0;
-    margin-bottom: 15px;
-}
-
-.post-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.linkedin-post-card:hover .post-image {
-    transform: scale(1.05);
-}
-
-.post-content {
-    color: var(--text-color);
-    line-height: 1.5;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-}
-
-.post-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: var(--text-light);
-}
-
-.btn-sm {
-    padding: 8px 20px;
-    font-size: 0.9rem;
-}
-
-/* Ajustes para móviles */
-@media (max-width: 768px) {
-    .post-image-container {
-        height: 160px;
+    
+    .nova-carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
-    .linkedin-posts-grid {
-        grid-template-columns: 1fr;
+    .services-header {
+        margin-bottom: 40px;
     }
+}
+
+/* Estilos para el logo SVG */
+.logo-svg {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo:hover .logo-svg {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
