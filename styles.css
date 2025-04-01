@@ -32,17 +32,15 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
-    padding-top: 80px;
+    padding-top: 0px;
 }
 
 /* ===== Navbar Fix ===== */
 .navbar {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: var();
-    box-shadow: var();
     z-index: 1000;
     padding: 15px 0;
     transition: var(--transition);
@@ -52,9 +50,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Añadido */
-    max-width: 1200px; /* Añadido para consistencia */
-    padding: 0 20px; /* Añadido */
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .logo {
@@ -100,6 +99,101 @@ body {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* Estilos para el botón de hamburguesa */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    outline: none;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--white);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+/* Estilos para el menú móvil - Versión compacta horizontal */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 70%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 0 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    
+    .nav-links.active {
+        max-height: 60px; /* Ajusta según necesidad */
+        opacity: 1;
+        padding: 10px 5px;
+    }
+    
+    .nav-links li {
+        flex: 1;
+        text-align: center;
+        min-width: 0;
+        transform: translateY(-10px);
+        transition: transform 0.3s ease;
+        transition-delay: 0.1s;
+    }
+    
+    .nav-links.active li {
+        transform: translateY(0);
+    }
+    
+    .nav-links a {
+        padding: 5px 3px;
+        display: block;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        transition-delay: 0.2s;
+    }
+    
+    .nav-links.active a {
+        opacity: 1;
+    }
+    
+    /* Ajustar el navbar para móvil */
+    .navbar .container {
+        padding: 10px 15px;
+    }
+    
+    /* Animación del botón hamburguesa */
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
 }
 
 /* ===== Utilidades ===== */
@@ -173,6 +267,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 }
 
 .btn-linkedin:hover {
@@ -194,7 +289,6 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    margin-top: -8.6vh;
 }
 
 .hero-content {
@@ -286,116 +380,137 @@ body {
     margin-bottom: 10px;
 }
 
-/* Services Section */
+/* Services Section - Rediseño Profesional */
 .services {
     background: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
         url('https://i.ibb.co/TMzcKXB6/paneles-solares.webp') no-repeat center center/cover;
     padding: 100px 0;
     position: relative;
-    
 }
 
 .services-header {
     text-align: center;
     margin-bottom: 60px;
-    color: #ffffff;
 }
 
 .service-intro {
     font-size: 1.25rem;
-    color: #ffffff;
-    margin-top: 1rem;
-    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 1.5rem;
+    font-weight: 300;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.6;
 }
 
-/* Carrusel de servicios */
-.nova-carousel {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.nova-carousel-container {
-    position: relative;
-    padding: 0 60px;
-}
-
-.nova-carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+/* Grid de servicios - Versión responsive mejorada */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas en desktop */
     gap: 30px;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 
-.nova-carousel-slide {
-    min-width: calc(33.333% - 20px);
-    flex: 0 0 auto;
-    transition: all 0.3s ease;
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
 }
 
-.nova-service-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+        gap: 25px;
+    }
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
     height: 100%;
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-    border: 1px solid #eee;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    min-height: 100%; /* Asegura misma altura */
 }
 
-.nova-service-content {
+.service-content {
     padding: 40px 30px;
     position: relative;
     z-index: 2;
-    background: #fff;
-    transition: all 0.4s ease;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.nova-service-icon {
+.service-icon {
     font-size: 2.5rem;
-    color: #F57C00;
-    margin-bottom: 25px;
+    color: #FF9800;
+    margin: 0 auto 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 152, 0, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
-.nova-service-card h3 {
-    color: #222;
+.service-card h3 {
+    color: #fff;
     margin-bottom: 25px;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
 }
 
-.nova-service-features {
-    margin-top: 20px;
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF9800, transparent);
 }
 
-.feature-item {
+.service-features {
+    margin-top: 30px;
+    flex-grow: 1;
+}
+
+.service-features .feature-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 15px;
-    color: #555;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
+    font-weight: 300;
 }
 
-.feature-check {
-    color: #F57C00;
+.service-features .feature-check {
+    color: #FF9800;
     margin-right: 12px;
     font-size: 0.9rem;
-    margin-top: 3px;
 }
 
-.nova-service-overlay {
+.service-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, #F57C00, #FF9800);
+    background: linear-gradient(135deg, rgba(245, 124, 0, 0.9), rgba(255, 152, 0, 0.9));
     color: white;
     padding: 30px;
     transform: translateY(100%);
@@ -403,94 +518,42 @@ body {
     z-index: 3;
 }
 
-.nova-service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 152, 0, 0.3);
 }
 
-.nova-service-card:hover .nova-service-overlay {
+.service-card:hover .service-icon {
+    background: rgba(255, 152, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.service-card:hover .service-overlay {
     transform: translateY(0);
 }
 
-.nova-btn {
+.service-btn {
     display: inline-block;
     padding: 12px 30px;
     background-color: white;
     color: #F57C00;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     transition: all 0.3s ease;
     margin-top: 20px;
     text-align: center;
     width: 100%;
+    border: none;
+    cursor: pointer;
 }
 
-.nova-btn:hover {
+.service-btn:hover {
     background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
-/* Controles del carrusel */
-.nova-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F57C00;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    opacity: 0.9;
-}
-
-.nova-carousel-btn:hover {
-    background: #F57C00;
-    color: white;
-    opacity: 1;
-    transform: translateY(-50%) scale(1.05);
-}
-
-.nova-carousel-prev {
-    left: 0;
-}
-
-.nova-carousel-next {
-    right: 0;
-}
-
-/* Indicadores */
-.nova-carousel-indicators {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    gap: 10px;
-}
-
-.nova-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #ddd;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.nova-indicator.active {
-    background: #F57C00;
-    transform: scale(1.3);
-}
-
 /* News Section */
 .news {
     background-color: #ffffff;
@@ -665,10 +728,6 @@ body {
         margin-bottom: 30px;
     }
     
-    .nova-carousel-slide {
-        min-width: calc(50% - 15px);
-    }
-    
     .services {
         padding: 80px 0;
     }
@@ -683,27 +742,6 @@ body {
         font-size: 2.5rem;
     }
     
-    .nav-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
-    }
-    
-    .nav-links li {
-        padding: 5px;
-    }
-    
-    .nav-links li a {
-        font-size: 0.9rem;
-        padding: 5px 8px;
-    }
-    
-    .nova-carousel-slide {
-        min-width: 100%;
-    }
-    
     .services {
         padding: 60px 0;
     }
@@ -714,27 +752,6 @@ body {
     
     .linkedin-posts-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .nova-carousel-container {
-        padding: 0 30px;
-    }
-    
-    .nova-service-content {
-        padding: 30px 20px;
-    }
-    
-    .nova-service-overlay {
-        padding: 20px;
-    }
-    
-    /* Ajuste para móvil - navbar más compacta */
-    body {
-        padding-top: 60px;
-    }
-    
-    .navbar {
-        padding: 10px 0;
     }
 }
 
@@ -752,12 +769,6 @@ body {
         text-align: center;
     }
     
-    .nova-carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
     .services-header {
         margin-bottom: 40px;
     }
@@ -773,4 +784,59 @@ body {
 .logo:hover .logo-svg {
     transform: scale(1.05);
     opacity: 0.9;
+}
+
+/* Botón flotante de WhatsApp - Versión mejorada */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 64px;  /* Aumentado de 60px a 64px */
+    height: 64px; /* Aumentado de 60px a 64px */
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 34px; /* Aumentado de 30px a 34px */
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    text-decoration: none !important; /* Elimina el subrayado */
+}
+
+.whatsapp-float i {
+    margin-top: 2px; /* Ajuste fino de centrado vertical */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 56px;  /* Aumentado de 50px a 56px */
+        height: 56px; /* Aumentado de 50px a 56px */
+        font-size: 30px; /* Aumentado de 25px a 30px */
+        bottom: 20px;
+        left: 20px;
+    }
 }

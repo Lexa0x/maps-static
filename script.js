@@ -21,17 +21,53 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Cerrar el menú móvil si está abierto
+                const hamburgerBtn = document.getElementById('hamburger-btn');
+                const navLinks = document.getElementById('nav-links');
+                if (hamburgerBtn && navLinks && hamburgerBtn.classList.contains('active')) {
+                    hamburgerBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
             }
         });
     });
 
+// Menú toggle con animación mejorada
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Remover la clase active después de la animación si se está cerrando
+        if (!navLinks.classList.contains('active')) {
+            setTimeout(() => {
+                navLinks.classList.remove('active');
+            }, 400); // Debe coincidir con la duración de la transición
+        }
+    });
+    
+    // Cerrar menú al hacer clic en enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+    
+    // Ajuste dinámico del menú
+    function adjustMenu() {
+        // Tu lógica de ajuste previa...
+    }
+    
+    window.addEventListener('resize', adjustMenu);
+}
+
     // Cargar publicaciones de LinkedIn
     loadLinkedInPosts();
-
-    // Inicializar carrusel si existe
-    if (document.getElementById('nova-carousel-track')) {
-        initNovaCarousel();
-    }
 });
 
 /**
@@ -165,7 +201,7 @@ function formatDate(dateString) {
 
 /**
  * Muestra mensaje cuando no hay publicaciones
- * @param {HTMLElement} container - Contenedor donde mostrar el mensaje
+ * @param {HTMLElement} container - Contenedor donde mostrar el menaje
  */
 function showNoPostsMessage(container) {
     container.innerHTML = `
@@ -197,89 +233,4 @@ function showFallbackMessage(container) {
         </a>
     </div>
     `;
-}
-
-/**
- * Inicializa el carrusel de servicios
- */
-function initNovaCarousel() {
-    const carousel = {
-        currentIndex: 0,
-        interval: null,
-        track: document.getElementById('nova-carousel-track'),
-        slides: document.querySelectorAll('.nova-carousel-slide'),
-        indicators: document.querySelectorAll('.nova-indicator'),
-        nextBtn: document.querySelector('.nova-carousel-next'),
-        prevBtn: document.querySelector('.nova-carousel-prev'),
-        container: document.querySelector('.nova-carousel-container'),
-
-        init: function() {
-            // Configurar eventos
-            this.nextBtn.addEventListener('click', () => this.next());
-            this.prevBtn.addEventListener('click', () => this.prev());
-            
-            this.indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => this.goTo(index));
-            });
-            
-            // Auto-avance
-            this.startAutoPlay();
-            
-            // Pausar al interactuar
-            this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
-            this.container.addEventListener('mouseleave', () => this.startAutoPlay());
-            
-            // Configurar responsive
-            this.setupResponsive();
-            window.addEventListener('resize', () => this.setupResponsive());
-        },
-        
-        setupResponsive: function() {
-            const slideWidth = this.slides[0].getBoundingClientRect().width;
-            const containerWidth = this.container.getBoundingClientRect().width;
-            const visibleSlides = Math.floor(containerWidth / slideWidth);
-            
-            // Ajustar posición según slides visibles
-            this.goTo(this.currentIndex);
-        },
-        
-        goTo: function(index) {
-            const slideWidth = this.slides[0].getBoundingClientRect().width;
-            this.currentIndex = index;
-            this.track.style.transform = `translateX(-${slideWidth * this.currentIndex}px)`;
-            this.updateIndicators();
-        },
-        
-        next: function() {
-            const maxIndex = this.slides.length - Math.floor(this.container.getBoundingClientRect().width / this.slides[0].getBoundingClientRect().width);
-            this.currentIndex = this.currentIndex >= maxIndex ? 0 : this.currentIndex + 1;
-            this.goTo(this.currentIndex);
-        },
-        
-        prev: function() {
-            const maxIndex = this.slides.length - 1;
-            this.currentIndex = this.currentIndex <= 0 ? maxIndex : this.currentIndex - 1;
-            this.goTo(this.currentIndex);
-        },
-        
-        updateIndicators: function() {
-            this.indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === this.currentIndex);
-            });
-        },
-        
-        startAutoPlay: function() {
-            this.stopAutoPlay();
-            this.interval = setInterval(() => this.next(), 6000);
-        },
-        
-        stopAutoPlay: function() {
-            if (this.interval) {
-                clearInterval(this.interval);
-                this.interval = null;
-            }
-        }
-    };
-
-    carousel.init();
 }
