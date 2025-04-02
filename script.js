@@ -147,6 +147,40 @@ function renderLinkedInPosts(posts) {
     container.innerHTML = html;
 }
 
+// Animación para los números en estadísticas (si decides incluirla)
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-count'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            stat.textContent = Math.floor(current);
+        }, 16);
+    });
+}
+
+// Llamar a la función cuando la sección sea visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateStats();
+            observer.unobserve(entry.target);
+        }
+    });
+}, {threshold: 0.5});
+
+const successSection = document.querySelector('.success');
+if (successSection) observer.observe(successSection);
+
 /**
  * Extrae la mejor imagen disponible de la publicación
  * @param {Object} post - Objeto de publicación
