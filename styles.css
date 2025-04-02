@@ -579,6 +579,9 @@
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    display: flex; /* Añadido */
+    flex-direction: column; /* Añadido */
+    height: 100%; /* Añadido */
   }
   
   .linkedin-post-card:hover {
@@ -610,16 +613,22 @@
     line-height: 1.5;
     margin-bottom: 15px;
     font-size: 0.95rem;
+    flex-grow: 1; /* Añadido para que ocupe el espacio disponible */
   }
   
   .post-meta {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Cambiado de row a column */
+    gap: 10px; /* Añadido espacio entre elementos */
     margin-top: 15px;
     font-size: 0.85rem;
     color: var(--text-light);
   }
+
+  .post-date {
+    order: -1; /* Mueve la fecha arriba */
+  }
+  
   
   .linkedin-cta {
     text-align: center;
@@ -740,6 +749,11 @@
   
   .no-posts-message {
     color: var(--text-light);
+  }
+  
+  .btn.btn-linkedin.btn-sm {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-top: 10px; /* Espacio entre fecha y botón */
   }
   
   /* ===== ANIMACIONES ===== */
