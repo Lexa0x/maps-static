@@ -1,4 +1,6 @@
 /* ===== VARIABLES Y RESET ===== */
+@import url('https://fonts.cdnfonts.com/css/narin');
+
 :root {
     --primary-color: #F57C00;
     --primary-light: #FFB74D;
@@ -15,12 +17,11 @@
     --shadow-lg: 0 15px 30px rgba(0,0,0,0.15);
     --transition: all 0.3s ease;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   html {
@@ -29,6 +30,7 @@
   }
   
   body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -956,4 +958,31 @@ section[id] {
   opacity: 1;
   transform: none;
   visibility: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Narin';
+  font-weight: 800;
+  font-size: larger;
+}
+
+p{
+  font-size: 1.2rem;
+}
+
+p.service-intro, div.hero-content p{
+  font-size: 1.4rem;
+  text-wrap: balance;
+}
+
+span{
+  font-size: 1.1rem;
+}
+
+footer img{
+  max-width: 300px;
+}
+
+.t-color{
+  color: var(--primary-color);
 }

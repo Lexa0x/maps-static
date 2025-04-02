@@ -154,7 +154,6 @@ function renderLinkedInPosts(posts) {
 						}
             
             <div class="post-content">
-                <h3 class="post-title">${post.title || "Nueva publicación"}</h3>
                 <p>${cleanContent}</p>
             </div>
             
