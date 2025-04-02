@@ -755,7 +755,7 @@
     width: 100%; /* Ocupa todo el ancho disponible */
     margin-top: 10px; /* Espacio entre fecha y botón */
   }
-  
+
   /* ===== ANIMACIONES ===== */
   @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -910,3 +910,33 @@
       font-size: 0.85rem;
     }
   }
+
+  /* Asegura que las secciones no tengan padding/margin superior no deseado */
+section[id] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Añade un pequeño espacio invisible al inicio de cada sección destino */
+.section-anchor {
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* Ajusta el primer elemento de cada sección para compensar el navbar */
+#inicio ~ section .container > *:first-child,
+#nosotros ~ section .container > *:first-child,
+#servicios ~ section .container > *:first-child,
+#noticias ~ section .container > *:first-child {
+    padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+    #inicio ~ section .container > *:first-child,
+    #nosotros ~ section .container > *:first-child,
+    #servicios ~ section .container > *:first-child,
+    #noticias ~ section .container > *:first-child {
+        padding-top: 60px;
+    }
+}

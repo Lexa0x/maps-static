@@ -5,33 +5,33 @@ document.addEventListener('DOMContentLoaded', function() {
         yearElement.textContent = new Date().getFullYear();
     }
 
-    // Smooth scrolling para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Cerrar el menú móvil si está abierto
-                const hamburgerBtn = document.getElementById('hamburger-btn');
-                const navLinks = document.getElementById('nav-links');
-                if (hamburgerBtn && navLinks && hamburgerBtn.classList.contains('active')) {
-                    hamburgerBtn.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
+// Smooth scrolling mejorado para navbar absolute
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset;
+
+            window.scrollTo({
+                top: offsetPosition, // -10px para un pequeño espacio
+                behavior: 'smooth'
+            });
+
+            // Cerrar menú móvil si está abierto
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const navLinks = document.getElementById('nav-links');
+            if (hamburgerBtn && navLinks && hamburgerBtn.classList.contains('active')) {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
             }
-        });
+        }
     });
+});
 
 // Menú toggle con animación mejorada
 const hamburgerBtn = document.getElementById('hamburger-btn');
