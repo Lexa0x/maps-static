@@ -246,7 +246,7 @@
     height: 100vh;
     background: 
       linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-      url('https://i.ibb.co/bgM3RrYK/atardecer-paneles-solares-reflejo.webp') no-repeat center center/cover;
+      url('https://i.ibb.co/TMzcKXB6/paneles-solares.webp') no-repeat center center/cover;
     color: var(--white);
     display: flex;
     align-items: center;
@@ -262,6 +262,7 @@
     font-size: 3rem;
     margin-bottom: 20px;
     line-height: 1.2;
+    text-wrap: balance;
   }
   
   .hero p {
@@ -939,4 +940,17 @@ section[id] {
     #noticias ~ section .container > *:first-child {
         padding-top: 60px;
     }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20vh);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+  will-change: opacity, visibility;
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
 }
