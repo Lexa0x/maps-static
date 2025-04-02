@@ -1,4 +1,6 @@
 /* ===== VARIABLES Y RESET ===== */
+@import url('https://fonts.cdnfonts.com/css/narin');
+
 :root {
     --primary-color: #F57C00;
     --primary-light: #FFB74D;
@@ -15,12 +17,11 @@
     --shadow-lg: 0 15px 30px rgba(0,0,0,0.15);
     --transition: all 0.3s ease;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   html {
@@ -29,6 +30,7 @@
   }
   
   body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -124,10 +126,6 @@
     padding: 0 15px;
   }
   
-  .section {
-    padding: 80px 0;
-  }
-  
   .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -146,6 +144,7 @@
   }
   
   .section-title1 {
+    padding-top: 0 !important;
     color: var(--white);
     text-align: center;
     font-size: 2.5rem;
@@ -161,6 +160,7 @@
   }
 
   .section-title2 {
+    padding-top: 0 !important;
     color: var(--white);
     text-align: center;
     font-size: 2.5rem;
@@ -246,7 +246,7 @@
     height: 100vh;
     background: 
       linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-      url('https://i.ibb.co/bgM3RrYK/atardecer-paneles-solares-reflejo.webp') no-repeat center center/cover;
+      url('https://i.ibb.co/TMzcKXB6/paneles-solares.webp') no-repeat center center/cover;
     color: var(--white);
     display: flex;
     align-items: center;
@@ -262,6 +262,7 @@
     font-size: 3rem;
     margin-bottom: 20px;
     line-height: 1.2;
+    text-wrap: balance;
   }
   
   .hero p {
@@ -278,6 +279,10 @@
   }
   
   /* ===== ABOUT SECTION ===== */
+.about{
+  padding-bottom: 80px;
+}
+
   .about-content {
     display: flex;
     gap: 50px;
@@ -551,6 +556,7 @@
   /* ===== NEWS SECTION ===== */
   .news {
     background-color: #ffffff;
+    padding-bottom: 80px;
   }
   
   .news-intro {
@@ -939,4 +945,44 @@ section[id] {
     #noticias ~ section .container > *:first-child {
         padding-top: 60px;
     }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(5vh);
+  visibility: hidden;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  will-change: opacity, visibility;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Narin';
+  font-weight: 800;
+  font-size: larger;
+}
+
+p{
+  font-size: 1.2rem;
+}
+
+p.service-intro, div.hero-content p{
+  font-size: 1.4rem;
+  text-wrap: balance;
+}
+
+span{
+  font-size: 1.1rem;
+}
+
+footer img{
+  max-width: 300px;
+}
+
+.t-color{
+  color: var(--primary-color);
 }
