@@ -403,7 +403,6 @@ p.service-intro, div.hero-content p {
 .success-image {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
 }
 
 .success-image img {
